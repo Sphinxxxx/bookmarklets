@@ -1,0 +1,98 @@
+#source, #editForm, #reference {
+    display: inline-block;
+    width: 33%;
+    min-width: 500px;
+    vertical-align: top;
+    white-space: normal;
+}
+
+#editForm, #reference {
+    margin-top: 5em;
+}
+#editForm textarea, #reference textarea {
+    width: 100%;
+}
+#reference textarea {
+    height: 30em;
+}
+#diff-result {
+    min-height: 10em;
+    background: lightyellow;
+    padding: 0.5em;
+    white-space: pre-line;
+    text-align: left;
+}
+#diff-result del {
+    text-decoration: none;
+    background: #8f8;
+}
+#diff-result ins {
+    text-decoration: line-through;
+    background: tomato;
+}
+
+
+#source {
+    text-align: left;
+}
+#img-wrapper {
+	position: relative;
+}
+#img-wrapper img {
+	width: 100%;
+	pointer-events: none;
+}
+
+#tools-top {
+	display: table;
+	width: 100%;
+}
+#selection-settings {
+	float: right;
+}
+#selection-settings label {
+	display: block;
+}
+
+#paragraphs, #paragraph-preview, .paragraph-overlay, 
+#merged-lines {
+	position: absolute;
+	top: 0; left: 0; right: 0;
+	pointer-events: none;
+}
+.paragraph-overlay {
+	background: rgba(255,255,0, 0.2);
+	border: 1px solid gold;
+}
+#paragraph-preview {
+	background: rgba(0,0,0, 0.1);
+	border: 1px solid silver;
+}
+
+#merged-lines {
+	pointer-events: auto;
+	background: white;
+}
+.merged-paragraph {
+	margin-bottom: 1em;
+}
+.merged-paragraph:last-child {
+	margin-bottom: 0;
+}
+.merged-paragraph canvas {
+    opacity: 0.6;
+}
+.merged-paragraph input {
+	display: block;
+	width: 80%;
+	margin: auto;
+	margin-bottom: 0.5em;
+	padding: 0em;
+	border: none;
+	background: rgba(255,255,0, 0.15);
+	font-size: 1.1em;
+    font-family: monospace;
+}
+.merged-line {
+	background-size: cover;
+}
