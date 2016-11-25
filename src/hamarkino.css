@@ -1,0 +1,47 @@
+.abo-overview {
+    width: 100%;
+    white-space: nowrap;
+    table-layout: fixed;
+}
+table.abo-overview tr:nth-of-type(even) {
+    background: #eee;
+}
+table.abo-overview tr:nth-of-type(odd) {
+    background: #f8f8f8;
+}
+/*
+table.abo-overview tr.ancient {
+    opacity: 0.5;
+}*/
+.abo-overview td {
+    width: 10%;
+    padding: 4px;
+    vertical-align: top;
+    overflow: hidden;
+    border-right: 1px solid silver;
+}
+.abo-overview td:first-child {
+    width: 4%;
+    padding: 0.5em 0;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 1em;
+}
+.abo-overview .ticketButton {
+    text-align: center;
+}
+.abo-overview .version {
+    font-weight: bold;
+    font-size: 0.8em;
+}
+.abo-overview .showStart {
+    display: inline-block;
+    font-size: 1.1em;
+}
+.abo-overview .screenName {
+    display: inline-block;
+    margin-left: .5em;
+    padding: 0 .2em;
+    border: 1px solid gray;
+    text-align: center;
+}
