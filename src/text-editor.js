@@ -31,23 +31,34 @@
     alert('Select/focus a <textarea>. ' + tag + ' is not a textarea.');
     return;
   }
-  var mode = prompt('Syntax mode', 'javascript');
+  var mode = prompt('Syntax mode', localStorage.bm_te_mode || 'javascript');
+  //http://stackoverflow.com/questions/12864582/javascript-prompt-cancel-button-to-terminate-the-function
+  if(mode === null) { return; }
+  
+  localStorage.bm_te_mode = mode;
+  
   
   function setCode() {
     //if(!window.CodeMirror) { return; }
     //clearInterval(poller);
     
-    CodeMirror.fromTextArea(text);
+    CodeMirror.fromTextArea(text, {
+      lineNumbers: true,
+      mode: mode,
+      theme: 'mdn-like'
+    });
   }
   
   if(window.CodeMirror) {
     setCode();
   }
   else {
-    addCSS("//cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/codemirror.min.css");
-    addScripts(["//cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/codemirror.min.js",
-                //"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/mode/javascript/javascript.min.js",
-                "//cdnjs.cloudflare.com/ajax/libs/codemirror/5.24.2/mode/"+mode+"/"+mode+".min.js"],
+    addCSS("//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css");
+    addCSS("//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/theme/mdn-like.min.css");
+
+    addScripts(["//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js",
+                //"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/javascript/javascript.min.js",
+                "//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/"+mode+"/"+mode+".min.js"],
               setCode);
   }
   //var poller = setInterval(setCode, 500);
