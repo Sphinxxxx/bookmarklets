@@ -39,14 +39,15 @@
   
   
   function setCode() {
-    //if(!window.CodeMirror) { return; }
-    //clearInterval(poller);
-    
-    CodeMirror.fromTextArea(text, {
+    var cm = CodeMirror.fromTextArea(text, {
       lineNumbers: true,
       mode: mode,
       theme: 'mdn-like'
     });
+
+    if(window.cmResize) {
+      cmResize(cm);
+    }
   }
   
   if(window.CodeMirror) {
@@ -56,11 +57,15 @@
     addCSS("//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css");
     addCSS("//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/theme/mdn-like.min.css");
 
-    addScripts(["//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js",
-                //"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/javascript/javascript.min.js",
-                "//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/"+mode+"/"+mode+".min.js"],
-              setCode);
+    addScripts(
+      [
+        "//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js",
+        //"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/javascript/javascript.min.js",
+        "//cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/"+mode+"/"+mode+".min.js",
+        "//cdn.rawgit.com/Sphinxxxx/cm-resize/v0.1/src/cm-resize.js",
+      ],
+      setCode
+    );
   }
-  //var poller = setInterval(setCode, 500);
   
 })();
